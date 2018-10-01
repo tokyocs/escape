@@ -42,7 +42,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KiX-dR-Y0O">
                                 <rect key="frame" x="121" y="253" width="133" height="161"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="プレイ"/>
                                 <connections>
                                     <segue destination="BV1-FR-VrT" kind="modal" id="bbm-Ov-pRY"/>
                                 </connections>
