@@ -11,10 +11,18 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    var newmap: SKSpriteNode!
+
+    
     private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
     
     override func didMove(to view: SKView) {
+        self.newmap = SKSpriteNode(imageNamed: "newmap")
+        self.newmap.xScale = 20
+        self.newmap.yScale = 20
+        self.newmap.position = CGPoint(x: 0, y: 0)
+        self.newmap.zPosition = -1.0
+        addChild(self.newmap)
 
     }
     
