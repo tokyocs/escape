@@ -17,13 +17,12 @@ import GameplayKit
     var newmap: SKSpriteNode!
     var hero: SKSpriteNode!
 
-    
     private var label : SKLabelNode?
     
     override func didMove(to view: SKView) {
         // left_buttonを画像登録して表示する
         self.left_button = SKSpriteNode(imageNamed: "left_button")
-        self.left_button.position = CGPoint(x:1000 , y: -2000)
+        self.left_button.position = CGPoint(x:-300 , y:0)
         self.left_button.xScale = 0.3
         self.left_button.yScale = 0.3
         self.left_button.zPosition = 0
@@ -31,7 +30,7 @@ import GameplayKit
         
         // right_buttonを画像登録して表示する
         self.right_button = SKSpriteNode(imageNamed: "right_button")
-        self.right_button.position = CGPoint(x: 1000 , y: 2000)
+        self.right_button.position = CGPoint(x:300, y:0)
         self.right_button.xScale = 0.3
         self.right_button.yScale = 0.3
         self.right_button.zPosition = 0
@@ -45,7 +44,7 @@ import GameplayKit
         addChild(self.newmap)
         self.hero = SKSpriteNode(imageNamed: "hero")
         self.hero.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
-        self.hero.position = CGPoint(x: 50, y: self.newmap.frame.maxY + 50)
+        self.hero.position = CGPoint(x:0, y:0)
         addChild(self.hero)
 
     }
