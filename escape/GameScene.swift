@@ -49,6 +49,7 @@ import GameplayKit
         self.hero.scale(to: CGSize(width: frame.width / 10, height: frame.width / 10))
         self.hero.position = CGPoint(x:0, y:0)
         addChild(self.hero)
+        
 
     }
     
