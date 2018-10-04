@@ -17,6 +17,7 @@
 		24BA0E4A215B2249005523C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24BA0E48215B2249005523C3 /* LaunchScreen.storyboard */; };
 		24BA0E55215B224A005523C3 /* escapeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BA0E54215B224A005523C3 /* escapeTests.swift */; };
 		24BA0E60215B224A005523C3 /* escapeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BA0E5F215B224A005523C3 /* escapeUITests.swift */; };
+		24BA0E6E21633F15005523C3 /* doaeoakru .mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 24BA0E6D21633F15005523C3 /* doaeoakru .mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		24BA0E5B215B224A005523C3 /* escapeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = escapeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		24BA0E5F215B224A005523C3 /* escapeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = escapeUITests.swift; sourceTree = "<group>"; };
 		24BA0E61215B224A005523C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24BA0E6D21633F15005523C3 /* doaeoakru .mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "doaeoakru .mp3"; path = "../../../Downloads/doaeoakru .mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				24BA0E41215B2249005523C3 /* GameViewController.swift */,
 				24BA0E43215B2249005523C3 /* Main.storyboard */,
 				24BA0E46215B2249005523C3 /* Assets.xcassets */,
+				24BA0E6D21633F15005523C3 /* doaeoakru .mp3 */,
 				24BA0E48215B2249005523C3 /* LaunchScreen.storyboard */,
 				24BA0E4B215B2249005523C3 /* Info.plist */,
 			);
@@ -246,6 +249,7 @@
 				24BA0E47215B2249005523C3 /* Assets.xcassets in Resources */,
 				24BA0E4A215B2249005523C3 /* LaunchScreen.storyboard in Resources */,
 				24BA0E3E215B2249005523C3 /* Actions.sks in Resources */,
+				24BA0E6E21633F15005523C3 /* doaeoakru .mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
