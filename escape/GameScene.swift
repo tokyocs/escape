@@ -14,7 +14,6 @@ class GameScene: SKScene {
     var newmap: SKSpriteNode!
     var hero: SKSpriteNode!
 
-    
     private var label : SKLabelNode?
     
     override func didMove(to view: SKView) {
