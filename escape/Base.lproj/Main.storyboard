@@ -68,13 +68,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KiX-dR-Y0O">
-                                <rect key="frame" x="234" y="174" width="577" height="420"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BBF-N2-yoe">
+                                <rect key="frame" x="442" y="307" width="140" height="155"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="54"/>
-                                <state key="normal" title="プレイ"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="　プレイ"/>
                                 <connections>
-                                    <segue destination="BV1-FR-VrT" kind="modal" id="bbm-Ov-pRY"/>
+                                    <segue destination="BV1-FR-VrT" kind="show" id="0sO-fF-dto"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -83,7 +83,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wSu-VZ-2dt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-540.234375" y="132.8125"/>
+            <point key="canvasLocation" x="-541.9921875" y="132.03125"/>
         </scene>
     </scenes>
 </document>
