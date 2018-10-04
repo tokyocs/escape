@@ -25,7 +25,7 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         // left_buttonを画像登録して表示する
         self.left_button = SKSpriteNode(imageNamed: "left_button")
-        self.left_button.position = CGPoint(x:1000 , y: -2000)
+        self.left_button.position = CGPoint(x:-300 , y:0)
         self.left_button.xScale = 0.3
         self.left_button.yScale = 0.3
         self.left_button.zPosition = 0
@@ -33,7 +33,7 @@ class GameScene: SKScene {
         
         // right_buttonを画像登録して表示する
         self.right_button = SKSpriteNode(imageNamed: "right_button")
-        self.right_button.position = CGPoint(x: 1000 , y: 2000)
+        self.right_button.position = CGPoint(x:300, y:0)
         self.right_button.xScale = 0.3
         self.right_button.yScale = 0.3
         self.right_button.zPosition = 0
