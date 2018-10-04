@@ -26,7 +26,7 @@ class GameScene: SKScene {
         addChild(self.newmap)
         self.hero = SKSpriteNode(imageNamed: "hero")
         self.hero.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
-        self.hero.position = CGPoint(x: 0, y: self.newmap.frame.maxY + 50)
+        self.hero.position = CGPoint(x: 50, y: self.newmap.frame.maxY + 50)
         addChild(self.hero)
 
     }
