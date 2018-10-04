@@ -13,7 +13,8 @@ import GameplayKit
     var left_button: SKSpriteNode!
     
     var right_button: SKSpriteNode!
-    
+    var up_button: SKSpriteNode!
+    var under_button: SKSpriteNode!
     var newmap: SKSpriteNode!
     var hero: SKSpriteNode!
 
@@ -35,7 +36,24 @@ import GameplayKit
         self.right_button.yScale = 0.3
         self.right_button.zPosition = 0
         addChild(self.right_button)
+        
+        // under_buttonを画像登録して表示する
+        self.under_button = SKSpriteNode(imageNamed: "under_button")
+        self.under_button.position = CGPoint(x: frame.width / 6, y: 100)
+        self.under_button.xScale = 1.5
+        self.under_button.yScale = 1.5
+        self.under_button.zPosition = 0
+        addChild(self.under_button)
+        
+        // under_button を画像登録して表示する
+        self.up_button = SKSpriteNode(imageNamed: "up_button")
+        self.up_button.position = CGPoint(x: frame.width - frame.width / 6, y: 100)
+        self.up_button.xScale = 1.5
+        self.up_button.yScale = 1.5
+        self.up_button.zPosition = 0
+        addChild(self.up_button)
 
+        
         self.newmap = SKSpriteNode(imageNamed: "newmap")
         self.newmap.xScale = 1.5
         self.newmap.yScale = 1
@@ -89,6 +107,13 @@ import GameplayKit
                 // 左に動く動きを指定する。
               hero.run(moveToLeft)
             
+                // 下のボタンが押されたら右に30px動かす。
+            }else if touchNode == up_button {
+                    // 下に動く動きを指定する。
+                    let moveToup = SKAction.moveTo(y: self.hero.position.x + 30, duration: 0.2)
+                    // 下に動かす。
+                    hero.run(moveToup)
+                
             }
         }
         
