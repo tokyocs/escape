@@ -43,7 +43,7 @@ import GameplayKit
         self.newmap.zPosition = -1.0
         addChild(self.newmap)
         self.hero = SKSpriteNode(imageNamed: "hero")
-        self.hero.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
+        self.hero.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
         self.hero.position = CGPoint(x:0, y:0)
         addChild(self.hero)
 
