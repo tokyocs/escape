@@ -88,6 +88,7 @@ import GameplayKit
                 let moveToLeft = SKAction.moveTo(x: self.hero.position.x - 30, duration: 0.2)
                 // 左に動く動きを指定する。
               hero.run(moveToLeft)
+            
             }
         }
         
