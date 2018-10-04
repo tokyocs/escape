@@ -39,17 +39,17 @@ import GameplayKit
         
         // under_buttonを画像登録して表示する
         self.under_button = SKSpriteNode(imageNamed: "under_button")
-        self.under_button.position = CGPoint(x: frame.width / 6, y: 100)
-        self.under_button.xScale = 1.5
-        self.under_button.yScale = 1.5
+        self.under_button.position = CGPoint(x:0, y:-200)
+        self.under_button.xScale = 0.3
+        self.under_button.yScale = 0.3
         self.under_button.zPosition = 0
         addChild(self.under_button)
         
-        // under_button を画像登録して表示する
+        // up_button を画像登録して表示する
         self.up_button = SKSpriteNode(imageNamed: "up_button")
-        self.up_button.position = CGPoint(x: frame.width - frame.width / 6, y: 100)
-        self.up_button.xScale = 1.5
-        self.up_button.yScale = 1.5
+        self.up_button.position = CGPoint(x:0, y:200)
+        self.up_button.xScale = 0.3
+        self.up_button.yScale = 0.3
         self.up_button.zPosition = 0
         addChild(self.up_button)
 
@@ -104,15 +104,22 @@ import GameplayKit
             }else if touchNode == left_button {
                 // 左に動く動きを指定する。
                 let moveToLeft = SKAction.moveTo(x: self.hero.position.x - 30, duration: 0.2)
-                // 左に動く動きを指定する。
+                // 左に動かす。
               hero.run(moveToLeft)
             
-                // 下のボタンが押されたら右に30px動かす。
-            }else if touchNode == up_button {
+                // 下のボタンが押されたら下に30px動かす。
+            }else if touchNode == under_button {
                     // 下に動く動きを指定する。
-                    let moveToup = SKAction.moveTo(y: self.hero.position.x + 30, duration: 0.2)
+                    let moveToUp = SKAction.moveTo(y: self.hero.position.y - 30, duration: 0.2)
                     // 下に動かす。
-                    hero.run(moveToup)
+                    hero.run(moveToUp)
+                
+                // 上のボタンが押されたら上に30px動かす。
+            }else if touchNode == up_button {
+                // 上に動く動きを指定する。
+                let moveToUp = SKAction.moveTo(y: self.hero.position.y + 30, duration: 0.2)
+                // 上に動かす。
+                hero.run(moveToUp)
                 
             }
         }
