@@ -36,14 +36,17 @@ import GameplayKit
         self.right_button.zPosition = 0
         addChild(self.right_button)
 
+        //newmapを画像登録して表示する
         self.newmap = SKSpriteNode(imageNamed: "newmap")
         self.newmap.xScale = 1.5
         self.newmap.yScale = 1
         self.newmap.position = CGPoint(x: 0, y: 0)
         self.newmap.zPosition = -1.0
         addChild(self.newmap)
+        
+        //heroを画像登録して表示する
         self.hero = SKSpriteNode(imageNamed: "hero")
-        self.hero.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
+        self.hero.scale(to: CGSize(width: frame.width / 10, height: frame.width / 10))
         self.hero.position = CGPoint(x:0, y:0)
         addChild(self.hero)
 
