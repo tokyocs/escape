@@ -12,16 +12,21 @@ import GameplayKit
 class GameScene: SKScene {
     
     var newmap: SKSpriteNode!
+    var hero: SKSpriteNode!
 
     private var label : SKLabelNode?
     
     override func didMove(to view: SKView) {
         self.newmap = SKSpriteNode(imageNamed: "newmap")
-        self.newmap.xScale = 20
-        self.newmap.yScale = 20
+        self.newmap.xScale = 1.5
+        self.newmap.yScale = 1
         self.newmap.position = CGPoint(x: 0, y: 0)
         self.newmap.zPosition = -1.0
         addChild(self.newmap)
+        self.hero = SKSpriteNode(imageNamed: "hero")
+        self.hero.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
+        self.hero.position = CGPoint(x: 0, y: self.newmap.frame.maxY + 50)
+        addChild(self.hero)
 
     }
     
