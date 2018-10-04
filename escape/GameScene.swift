@@ -9,10 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
-    var earth: SKSpriteNode!
-    
-    
+    class GameScene: SKScene {
     var left_button: SKSpriteNode!
     
     var right_button: SKSpriteNode!
