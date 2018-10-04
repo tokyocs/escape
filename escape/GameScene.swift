@@ -60,10 +60,13 @@ import GameplayKit
         self.newmap.position = CGPoint(x: 0, y: 0)
         self.newmap.zPosition = -1.0
         addChild(self.newmap)
+        
+        //heroを画像登録して表示する
         self.hero = SKSpriteNode(imageNamed: "hero")
         self.hero.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
         self.hero.position = CGPoint(x:0, y:0)
         addChild(self.hero)
+        
 
     }
     
