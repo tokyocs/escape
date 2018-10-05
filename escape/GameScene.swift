@@ -23,33 +23,33 @@ import GameplayKit
     override func didMove(to view: SKView) {
         // left_buttonを画像登録して表示する
         self.left_button = SKSpriteNode(imageNamed: "left_button")
-        self.left_button.position = CGPoint(x:-300 , y:0)
-        self.left_button.xScale = 0.3
-        self.left_button.yScale = 0.3
+        self.left_button.position = CGPoint(x:-330 , y:-180)
+        self.left_button.xScale = 0.15
+        self.left_button.yScale = 0.15
         self.left_button.zPosition = 0
         addChild(self.left_button)
         
         // right_buttonを画像登録して表示する
         self.right_button = SKSpriteNode(imageNamed: "right_button")
-        self.right_button.position = CGPoint(x:300, y:0)
-        self.right_button.xScale = 0.3
-        self.right_button.yScale = 0.3
+        self.right_button.position = CGPoint(x:-270, y:-180)
+        self.right_button.xScale = 0.15
+        self.right_button.yScale = 0.15
         self.right_button.zPosition = 0
         addChild(self.right_button)
         
         // under_buttonを画像登録して表示する
         self.under_button = SKSpriteNode(imageNamed: "under_button")
-        self.under_button.position = CGPoint(x:0, y:-200)
-        self.under_button.xScale = 0.3
-        self.under_button.yScale = 0.3
+        self.under_button.position = CGPoint(x:-300, y:-210)
+        self.under_button.xScale = 0.15
+        self.under_button.yScale = 0.15
         self.under_button.zPosition = 0
         addChild(self.under_button)
         
         // up_button を画像登録して表示する
         self.up_button = SKSpriteNode(imageNamed: "up_button")
-        self.up_button.position = CGPoint(x:0, y:200)
-        self.up_button.xScale = 0.3
-        self.up_button.yScale = 0.3
+        self.up_button.position = CGPoint(x:-300, y:-150)
+        self.up_button.xScale = 0.15
+        self.up_button.yScale = 0.15
         self.up_button.zPosition = 0
         addChild(self.up_button)
 
