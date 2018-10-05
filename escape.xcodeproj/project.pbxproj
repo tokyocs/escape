@@ -104,8 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				24BA0E39215B2249005523C3 /* AppDelegate.swift */,
-				24BA0E3B215B2249005523C3 /* GameScene.sks */,
 				24BA0E3D215B2249005523C3 /* Actions.sks */,
+				24BA0E3B215B2249005523C3 /* GameScene.sks */,
 				24BA0E3F215B2249005523C3 /* GameScene.swift */,
 				24BA0E41215B2249005523C3 /* GameViewController.swift */,
 				24BA0E43215B2249005523C3 /* Main.storyboard */,
