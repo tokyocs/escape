@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "left_button.png",
+      "filename" : "up_button.png",
       "scale" : "1x"
     },
     {
