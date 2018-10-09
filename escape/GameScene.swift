@@ -8,8 +8,10 @@
 
 import SpriteKit
 import GameplayKit
+import SpriteKit
 
-    class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
+
     var left_button: SKSpriteNode!
     
     var right_button: SKSpriteNode!
@@ -17,10 +19,27 @@ import GameplayKit
     var under_button: SKSpriteNode!
     var newmap: SKSpriteNode!
     var hero: SKSpriteNode!
+    var node1: SKSpriteNode!
+    var node2: SKSpriteNode!
+
+    let Node1: UInt32 = 0b0001
+    let Node2: UInt32 = 0b0010
+    let Hero: UInt32 = 0b0100
 
     private var label : SKLabelNode?
     
     override func didMove(to view: SKView) {
+        
+        self.node1 = SKSpriteNode(imageNamed:"node1")
+        self.node1.position = CGPoint(x: frame.midX, y: frame.midY-100)
+        self.node1.physicsBody = SKPhysicsBody(rectangleOf: node1.size)
+        self.node1.physicsBody?.affectedByGravity = false
+        self.node1.physicsBody?.isDynamic = true
+        self.node1.physicsBody?.categoryBitMask = Node1
+        self.node1.xScale = 0.2
+        self.node1.yScale = 0.2
+        addChild(self.node1)
+        
         // left_buttonを画像登録して表示する
         self.left_button = SKSpriteNode(imageNamed: "left_button")
         self.left_button.position = CGPoint(x:-330 , y:-180)
@@ -63,12 +82,12 @@ import GameplayKit
         self.hero = SKSpriteNode(imageNamed: "hero")
         self.hero.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
         self.hero.position = CGPoint(x:0, y:0)
+        self.hero.physicsBody = SKPhysicsBody(rectangleOf: hero.size)
+        self.hero.physicsBody?.affectedByGravity = false
+        self.hero.physicsBody?.isDynamic = true
+        self.hero.physicsBody?.categoryBitMask = Hero
         addChild(self.hero)
 
-    }
-    
-    func touchDown(atPoint pos : CGPoint) {
-        
     }
     
     func touchMoved(toPoint pos : CGPoint) {
