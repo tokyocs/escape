@@ -34,7 +34,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.node1.position = CGPoint(x: frame.midX, y: frame.midY-100)
         self.node1.physicsBody = SKPhysicsBody(rectangleOf: node1.size)
         self.node1.physicsBody?.affectedByGravity = false
-        self.node1.physicsBody?.isDynamic = true
+        self.node1.physicsBody?.isDynamic = false
         self.node1.physicsBody?.categoryBitMask = Node1
         self.node1.xScale = 0.2
         self.node1.yScale = 0.2
