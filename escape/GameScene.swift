@@ -21,6 +21,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var hero: SKSpriteNode!
     var node1: SKSpriteNode!
     var node2: SKSpriteNode!
+    var monster: SKSpriteNode!
 
     let Node1: UInt32 = 0b0001
     let Node2: UInt32 = 0b0010
@@ -71,6 +72,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.up_button.yScale = 0.15
         self.up_button.zPosition = 0
         addChild(self.up_button)
+        
+
+        self.monster = SKSpriteNode(imageNamed: "monster")
+        self.monster.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
+        self.monster.position = CGPoint(x: 0, y: 50)
+        addChild(self.monster)
 
         
         self.newmap = SKSpriteNode(imageNamed: "newmap")
@@ -153,3 +160,4 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Called before each frame is rendered
     }
 }
+
