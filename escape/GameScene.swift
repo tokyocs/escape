@@ -23,14 +23,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var node2: SKSpriteNode!
     var monster: SKSpriteNode!
 
+    var node4: SKSpriteNode!
+    var node5: SKSpriteNode!
+    var node3: SKSpriteNode!
     let Node1: UInt32 = 0b0001
     let Node2: UInt32 = 0b0010
+    let Node3: UInt32 = 0b0011
     let Hero: UInt32 = 0b0100
 
     private var label : SKLabelNode?
     
     override func didMove(to view: SKView) {
         
+        //壁１
         self.node1 = SKSpriteNode(imageNamed:"node1")
         self.node1.position = CGPoint(x: frame.midX, y: frame.midY-100)
         self.node1.physicsBody = SKPhysicsBody(rectangleOf: node1.size)
@@ -41,6 +46,47 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.node1.yScale = 0.2
         addChild(self.node1)
         
+        self.node4 = SKSpriteNode(imageNamed:"node4")
+        self.node4.position = CGPoint(x: frame.midX-100, y: frame.midY-45)
+        self.node4.physicsBody = SKPhysicsBody(rectangleOf: node1.size)
+        self.node4.physicsBody?.affectedByGravity = false
+        self.node4.physicsBody?.isDynamic = false
+        self.node4.physicsBody?.categoryBitMask = Node1
+        self.node4.xScale = 0.2
+        self.node4.yScale = 0.2
+        addChild(self.node4)
+        
+        self.node5 = SKSpriteNode(imageNamed:"node5")
+        self.node5.position = CGPoint(x: frame.midX-100, y: frame.midY-45)
+        self.node5.physicsBody = SKPhysicsBody(rectangleOf: node1.size)
+        self.node5.physicsBody?.affectedByGravity = false
+        self.node5.physicsBody?.isDynamic = false
+        self.node5.physicsBody?.categoryBitMask = Node1
+        self.node5.xScale = 0.2
+        self.node5.yScale = 0.2
+        addChild(self.node5)
+        
+        //壁２
+        self.node2 = SKSpriteNode(imageNamed:"node2")
+        self.node2.position = CGPoint(x: frame.midX, y: frame.midY-130)
+        self.node2.physicsBody = SKPhysicsBody(rectangleOf: node2.size)
+        self.node2.physicsBody?.affectedByGravity = false
+        self.node2.physicsBody?.isDynamic = false
+        self.node2.physicsBody?.categoryBitMask = Node2
+        self.node2.xScale = 0.2
+        self.node2.yScale = 0.2
+        addChild(self.node2)
+        
+        //壁３
+        self.node3 = SKSpriteNode(imageNamed:"node3")
+        self.node3.position = CGPoint(x: frame.midX, y: frame.midY-160)
+        self.node3.physicsBody = SKPhysicsBody(rectangleOf: node3.size)
+        self.node3.physicsBody?.affectedByGravity = false
+        self.node3.physicsBody?.isDynamic = false
+        self.node3.physicsBody?.categoryBitMask = Node3
+        self.node3.xScale = 0.2
+        self.node3.yScale = 0.2
+        addChild(self.node3)
         // left_buttonを画像登録して表示する
         self.left_button = SKSpriteNode(imageNamed: "left_button")
         self.left_button.position = CGPoint(x:-330 , y:-180)
