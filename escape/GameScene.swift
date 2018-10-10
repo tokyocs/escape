@@ -21,8 +21,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var hero: SKSpriteNode!
     var node1: SKSpriteNode!
     var node2: SKSpriteNode!
+    var node4: SKSpriteNode!
+    var node5: SKSpriteNode!
     var node3: SKSpriteNode!
-    
     let Node1: UInt32 = 0b0001
     let Node2: UInt32 = 0b0010
     let Node3: UInt32 = 0b0011
@@ -42,6 +43,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.node1.xScale = 0.2
         self.node1.yScale = 0.2
         addChild(self.node1)
+        
+        self.node4 = SKSpriteNode(imageNamed:"node4")
+        self.node4.position = CGPoint(x: frame.midX-100, y: frame.midY-45)
+        self.node4.physicsBody = SKPhysicsBody(rectangleOf: node1.size)
+        self.node4.physicsBody?.affectedByGravity = false
+        self.node4.physicsBody?.isDynamic = false
+        self.node4.physicsBody?.categoryBitMask = Node1
+        self.node4.xScale = 0.2
+        self.node4.yScale = 0.2
+        addChild(self.node4)
+        
+        self.node5 = SKSpriteNode(imageNamed:"node5")
+        self.node5.position = CGPoint(x: frame.midX-100, y: frame.midY-45)
+        self.node5.physicsBody = SKPhysicsBody(rectangleOf: node1.size)
+        self.node5.physicsBody?.affectedByGravity = false
+        self.node5.physicsBody?.isDynamic = false
+        self.node5.physicsBody?.categoryBitMask = Node1
+        self.node5.xScale = 0.2
+        self.node5.yScale = 0.2
+        addChild(self.node5)
         
         //壁２
         self.node2 = SKSpriteNode(imageNamed:"node2")
