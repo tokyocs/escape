@@ -22,7 +22,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var node1: SKSpriteNode!
     var node2: SKSpriteNode!
     var monster: SKSpriteNode!
-
+    var timer: Timer?
     var node4: SKSpriteNode!
     var node5: SKSpriteNode!
     var node3: SKSpriteNode!
@@ -125,6 +125,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.monster.position = CGPoint(x: 0, y: 50)
         addChild(self.monster)
 
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
+            let moveToLeft = SKAction.move(to: CGPoint(x: self.hero.position.x, y: self.hero.position.y), duration: 3)
+            self.monster.run(moveToLeft)
+        })
         
         self.newmap = SKSpriteNode(imageNamed: "newmap")
         self.newmap.xScale = 1.5
