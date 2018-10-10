@@ -9,8 +9,9 @@
 import SpriteKit
 import GameplayKit
 import SpriteKit
+import AVFoundation
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
+class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
 
     var left_button: SKSpriteNode!
     
@@ -30,10 +31,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let Node2: UInt32 = 0b0010
     let Node3: UInt32 = 0b0011
     let Hero: UInt32 = 0b0100
+    var BGMPlayer: AVAudioPlayer!
+    func playBGM(name: String) {
+        guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {
+            print("nezumi")
+            return
+        }
+        
+        do {
+            // AVAudioPlayerのインスタンス化
+            BGMPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+            
+            // AVAudioPlayerのデリゲートをセット
+            BGMPlayer.delegate = self
+            BGMPlayer.numberOfLoops = -1
+            
+            // 音声の再生
+            BGMPlayer.play()
+        } catch {
+        }
+    }
+    
 
     private var label : SKLabelNode?
     
     override func didMove(to view: SKView) {
+            playBGM(name: "r4")
         
         //壁１
         self.node1 = SKSpriteNode(imageNamed:"node1")
