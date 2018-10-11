@@ -22,6 +22,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
     var monster: SKSpriteNode!
     var shelf: SKSpriteNode!
     var shelf2: SKSpriteNode!
+    var Ladders: SKSpriteNode!
     
     var node1: SKSpriteNode!
     var node2: SKSpriteNode!
@@ -166,6 +167,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.shelf2.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
         self.shelf2.position = CGPoint(x:0, y:0)
         addChild(self.shelf2)
+        
+        self.Ladders = SKSpriteNode(imageNamed: "Ladders")
+        self.Ladders.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
+        self.Ladders.position = CGPoint(x: 0, y: 50)
+        addChild(self.Ladders)
 
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
             let moveToLeft = SKAction.move(to: CGPoint(x: self.hero.position.x, y: self.hero.position.y), duration: 3)
