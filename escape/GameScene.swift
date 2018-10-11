@@ -120,7 +120,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.right_button.position = CGPoint(x:-270, y:-180)
         self.right_button.xScale = 0.15
         self.right_button.yScale = 0.15
-        self.right_button.zPosition = 0
+        self.right_button.zPosition = 1
         addChild(self.right_button)
         
         // under_buttonを画像登録して表示する
@@ -128,7 +128,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.under_button.position = CGPoint(x:-300, y:-210)
         self.under_button.xScale = 0.15
         self.under_button.yScale = 0.15
-        self.under_button.zPosition = 0
+        self.under_button.zPosition = 1
         addChild(self.under_button)
         
         // up_button を画像登録して表示する
@@ -136,7 +136,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.up_button.position = CGPoint(x:-300, y:-150)
         self.up_button.xScale = 0.15
         self.up_button.yScale = 0.15
-        self.up_button.zPosition = 0
+        self.up_button.zPosition = 1
         addChild(self.up_button)
         
 
