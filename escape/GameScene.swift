@@ -20,8 +20,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
     var newmap: SKSpriteNode!
     var hero: SKSpriteNode!
     var monster: SKSpriteNode!
-
-
+    var shelf: SKSpriteNode!
+    var shelf2: SKSpriteNode!
+    
     var node1: SKSpriteNode!
     var node2: SKSpriteNode!
     var node3: SKSpriteNode!
@@ -155,6 +156,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.monster.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
         self.monster.position = CGPoint(x: 0, y: 50)
         addChild(self.monster)
+        
+        self.shelf = SKSpriteNode(imageNamed: "shelf")
+        self.shelf.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
+        self.shelf.position = CGPoint(x:0, y:0)
+        addChild(self.shelf)
+        
+        self.shelf2 = SKSpriteNode(imageNamed: "shelf2")
+        self.shelf2.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
+        self.shelf2.position = CGPoint(x:0, y:0)
+        addChild(self.shelf2)
 
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
             let moveToLeft = SKAction.move(to: CGPoint(x: self.hero.position.x, y: self.hero.position.y), duration: 3)
