@@ -38,8 +38,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
     let Node3: UInt32 = 0b0011
     let Node4: UInt32 = 0b0101
     let Hero: UInt32 = 0b0100
-
+    let Monster: UInt32 = 0b0101
     var BGMPlayer: AVAudioPlayer!
+    var gameover: SKSpriteNode!
     func playBGM(name: String) {
         guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {
             print("nezumi")
@@ -154,8 +155,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         
 
         self.monster = SKSpriteNode(imageNamed: "monster")
-        self.monster.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
-        self.monster.position = CGPoint(x: 0, y: 50)
+        self.monster.scale(to: CGSize(width: frame.width * 0.2, height: frame.width * 0.2))
+        self.monster.position = CGPoint(x: -100, y: 50)
+        self.monster.physicsBody = SKPhysicsBody(circleOfRadius: self.monster.frame.width * 0.1)
+        self.monster.physicsBody?.categoryBitMask = Monster
+        self.monster.physicsBody?.contactTestBitMask = Hero
+        self.monster.physicsBody?.collisionBitMask = 0
+        self.monster.physicsBody?.affectedByGravity = false
+        self.monster.physicsBody?.isDynamic = false
         addChild(self.monster)
         
         self.shelf = SKSpriteNode(imageNamed: "shelf")
@@ -188,9 +195,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.hero.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
         self.hero.position = CGPoint(x:0, y:0)
         self.hero.physicsBody = SKPhysicsBody(rectangleOf: hero.size)
+        self.hero.physicsBody?.categoryBitMask = Hero
+        self.hero.physicsBody?.contactTestBitMask = Monster
         self.hero.physicsBody?.affectedByGravity = false
         self.hero.physicsBody?.isDynamic = true
-        self.hero.physicsBody?.categoryBitMask = Hero
         addChild(self.hero)
 
     }
@@ -272,6 +280,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
             newScene.scaleMode = SKSceneScaleMode.aspectFill
             self.view?.presentScene(newScene)
         }
+    }
+    func didBegin(_ contact: SKPhysicsContact) {
+        print("contact")
+        var hero: SKPhysicsBody
+        var target: SKPhysicsBody
+        if contact.bodyA.categoryBitMask == Monster {
+            hero = contact.bodyA
+            target = contact.bodyB
+        } else {
+            hero = contact.bodyB
+            target = contact.bodyA
+        }
+        if target.categoryBitMask == Monster|Hero {
+            gameOver()
+        }
+    }
+    func gameOver() {
+        isPaused = true
+        // gameover を画像登録して表示する
+        self.gameover = SKSpriteNode(imageNamed: "gameover")
+        self.gameover.position = CGPoint(x:-300, y:-150)
+        self.gameover.xScale = 0.15
+        self.gameover.yScale = 0.15
+        self.gameover.zPosition = 3
+        addChild(self.gameover)
+       
     }
 }
 
