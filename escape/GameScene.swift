@@ -13,7 +13,6 @@ import AVFoundation
 
 class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
 
-    
     var right_button: SKSpriteNode!
     var up_button: SKSpriteNode!
     var under_button: SKSpriteNode!
@@ -29,13 +28,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
     var node4: SKSpriteNode!
 
     var timer: Timer?
-
+    var timer2: Timer?
+    var timer3: Int = 60
 
     let Node1: UInt32 = 0b0001
     let Node2: UInt32 = 0b0010
     let Node3: UInt32 = 0b0011
     let Node4: UInt32 = 0b0101
     let Hero: UInt32 = 0b0100
+
     var BGMPlayer: AVAudioPlayer!
     func playBGM(name: String) {
         guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {
@@ -62,6 +63,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
     
     override func didMove(to view: SKView) {
             playBGM(name: "r4")
+        
+        //残りの時間を減らす
+        timer2 = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
+        
+            self.timer3 = self.timer3 - 1
+            //0秒になったらゲームオーバー
+            if(self.timer3 <= 0) {
+                self.gameOver()
+            }
+        })
         
         //壁１
         self.node1 = SKSpriteNode(imageNamed:"node1")
@@ -226,8 +237,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         
     }
     
-    override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
+    func gameOver() {
+        //ゲームを中断
+        isPaused = true
+        //タイマーを止める
+        timer?.invalidate()
+        timer2?.invalidate()
+        //音を止める
+        //FIXME
+        
+        //得点を保存する
+        //FIXME
+        //1秒後に画面を移動する
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
+            // 結果シーンに遷移させる。
+            let newScene = KekkaScene(size: (self.scene?.size)!)
+            newScene.scaleMode = SKSceneScaleMode.aspectFill
+            self.view?.presentScene(newScene)
+        }
     }
 }
 
