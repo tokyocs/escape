@@ -87,7 +87,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.node1.physicsBody = SKPhysicsBody(rectangleOf: node1.size)
         self.node1.physicsBody?.affectedByGravity = false
         self.node1.physicsBody?.isDynamic = false
-        self.node1.physicsBody?.categoryBitMask = Node1
+        self.node1.physicsBody?.categoryBitMask = Shelf
         self.node1.xScale = 2
         self.node1.yScale = 0.4
         addChild(self.node1)
@@ -98,29 +98,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.node2.physicsBody = SKPhysicsBody(rectangleOf: node2.size)
         self.node2.physicsBody?.affectedByGravity = false
         self.node2.physicsBody?.isDynamic = false
-        self.node2.physicsBody?.categoryBitMask = Node2
+        self.node2.physicsBody?.categoryBitMask = Shelf
         self.node2.xScale = 2
         self.node2.yScale = 0.4
         addChild(self.node2)
         
         //壁３
         self.node3 = SKSpriteNode(imageNamed:"node3")
-        self.node3.position = CGPoint(x:650, y: 0)
+        self.node3.position = CGPoint(x:360, y: 0)
         self.node3.physicsBody = SKPhysicsBody(rectangleOf: node3.size)
         self.node3.physicsBody?.affectedByGravity = false
         self.node3.physicsBody?.isDynamic = false
-        self.node3.physicsBody?.categoryBitMask = Node3
+        self.node3.physicsBody?.categoryBitMask = Shelf
         self.node3.xScale = 1
         self.node3.yScale = 5
         addChild(self.node3)
         
         //壁４
         self.node4 = SKSpriteNode(imageNamed:"node4")
-        self.node4.position = CGPoint(x: -650, y: 0)
+        self.node4.position = CGPoint(x: -360, y: 0)
         self.node4.physicsBody = SKPhysicsBody(rectangleOf: node4.size)
         self.node4.physicsBody?.affectedByGravity = false
         self.node4.physicsBody?.isDynamic = false
-        self.node4.physicsBody?.categoryBitMask = Node4
+        self.node4.physicsBody?.categoryBitMask = Shelf
         self.node4.xScale = 1
         self.node4.yScale = 5
         addChild(self.node4)
