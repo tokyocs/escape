@@ -13,7 +13,6 @@ import AVFoundation
 
 class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
 
-    
     var right_button: SKSpriteNode!
     var up_button: SKSpriteNode!
     var under_button: SKSpriteNode!
@@ -21,21 +20,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
     var newmap: SKSpriteNode!
     var hero: SKSpriteNode!
     var monster: SKSpriteNode!
-
-
+    var shelf: SKSpriteNode!
+    var shelf2: SKSpriteNode!
+    
     var node1: SKSpriteNode!
     var node2: SKSpriteNode!
     var node3: SKSpriteNode!
     var node4: SKSpriteNode!
 
     var timer: Timer?
-
+    var timer2: Timer?
+    var timer3: Int = 60
 
     let Node1: UInt32 = 0b0001
     let Node2: UInt32 = 0b0010
     let Node3: UInt32 = 0b0011
     let Node4: UInt32 = 0b0101
     let Hero: UInt32 = 0b0100
+
     var BGMPlayer: AVAudioPlayer!
     func playBGM(name: String) {
         guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {
@@ -62,6 +64,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
     
     override func didMove(to view: SKView) {
             playBGM(name: "r4")
+        
+        //残りの時間を減らす
+        timer2 = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
+        
+            self.timer3 = self.timer3 - 1
+            //0秒になったらゲームオーバー
+            if(self.timer3 <= 0) {
+                self.gameOver()
+            }
+        })
         
         //壁１
         self.node1 = SKSpriteNode(imageNamed:"node1")
@@ -144,6 +156,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.monster.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
         self.monster.position = CGPoint(x: 0, y: 50)
         addChild(self.monster)
+        
+        self.shelf = SKSpriteNode(imageNamed: "shelf")
+        self.shelf.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
+        self.shelf.position = CGPoint(x:0, y:0)
+        addChild(self.shelf)
+        
+        self.shelf2 = SKSpriteNode(imageNamed: "shelf2")
+        self.shelf2.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
+        self.shelf2.position = CGPoint(x:0, y:0)
+        addChild(self.shelf2)
 
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
             let moveToLeft = SKAction.move(to: CGPoint(x: self.hero.position.x, y: self.hero.position.y), duration: 3)
@@ -226,8 +248,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         
     }
     
-    override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
+    func gameOver() {
+        //ゲームを中断
+        isPaused = true
+        //タイマーを止める
+        timer?.invalidate()
+        timer2?.invalidate()
+        //音を止める
+        //FIXME
+        
+        //得点を保存する
+        //FIXME
+        //1秒後に画面を移動する
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
+            // 結果シーンに遷移させる。
+            let newScene = KekkaScene(size: (self.scene?.size)!)
+            newScene.scaleMode = SKSceneScaleMode.aspectFill
+            self.view?.presentScene(newScene)
+        }
     }
 }
 
