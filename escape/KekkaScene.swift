@@ -16,8 +16,8 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         
         self.haikei = SKSpriteNode(imageNamed: "GAMECLEAR")
-        self.haikei.xScale = view.frame.size.width/self.haikei.size.width
-        self.haikei.yScale = view.frame.size.height/self.haikei.size.height
+        self.haikei.xScale = 0.75
+        self.haikei.yScale = 0.8
         self.haikei.position = CGPoint(x: size.width*0.5 , y: size.height*0.5)
         addChild(self.haikei)
         
