@@ -20,6 +20,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
     var newmap: SKSpriteNode!
     var hero: SKSpriteNode!
     var monster: SKSpriteNode!
+
     var shelf: SKSpriteNode!
     var shelf2: SKSpriteNode!
     var Ladders: SKSpriteNode!
@@ -37,8 +38,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
     let Node2: UInt32 = 0b0010
     let Node3: UInt32 = 0b0011
     let Node4: UInt32 = 0b0101
+    let Shelf: UInt32 = 0b0111
+    let Shelf2: UInt32 = 0b1000
     let Hero: UInt32 = 0b0100
-    let Monster: UInt32 = 0b0101
+    let Monster: UInt32 = 0b0110
+
     var BGMPlayer: AVAudioPlayer!
     var gameover: SKSpriteNode!
     func playBGM(name: String) {
@@ -120,6 +124,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.node4.xScale = 1
         self.node4.yScale = 5
         addChild(self.node4)
+        
+        //棚１
+        self.shelf = SKSpriteNode(imageNamed:"shelf")
+        self.shelf.position = CGPoint(x: -200, y: -150)
+        self.shelf.physicsBody = SKPhysicsBody(rectangleOf: shelf.size)
+        self.shelf.physicsBody?.affectedByGravity = false
+        self.shelf.physicsBody?.isDynamic = false
+        self.shelf.physicsBody?.categoryBitMask = Shelf
+        self.shelf.xScale = 0.1
+        self.shelf.yScale = 0.1
+        addChild(self.shelf)
 
         // left_buttonを画像登録して表示する
         self.left_button = SKSpriteNode(imageNamed: "left_button")
