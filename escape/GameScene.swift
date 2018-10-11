@@ -34,14 +34,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
     var timer2: Timer?
     var timer3: Int = 60
 
-    let Node1: UInt32 = 0b0001
-    let Node2: UInt32 = 0b0010
-    let Node3: UInt32 = 0b0011
-    let Node4: UInt32 = 0b0101
-    let Shelf: UInt32 = 0b0111
-    let Shelf2: UInt32 = 0b1000
-    let Hero: UInt32 = 0b0100
-    let Monster: UInt32 = 0b0110
+    let Node1: UInt32 = 1 << 1
+    let Node2: UInt32 = 1 << 2
+    let Node3: UInt32 = 1 << 3
+    let Node4: UInt32 = 1 << 4
+    let Shelf: UInt32 = 1 << 5
+    let Shelf2: UInt32 = 1 << 6
+    let Hero: UInt32 = 1 << 7
+    let Monster: UInt32 = 1 << 8
     
     var BGMPlayer: AVAudioPlayer!
     var gameover: SKSpriteNode!
@@ -174,7 +174,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.monster.physicsBody = SKPhysicsBody(circleOfRadius: self.monster.frame.width * 0.1)
         self.monster.physicsBody?.categoryBitMask = Monster
 //        self.monster.physicsBody?.contactTestBitMask = Hero
-        self.monster.physicsBody?.collisionBitMask = Hero
+        self.monster.physicsBody?.collisionBitMask = 0
         self.monster.physicsBody?.affectedByGravity = false
         self.monster.physicsBody?.isDynamic = false
         addChild(self.monster)
@@ -207,7 +207,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.hero.physicsBody = SKPhysicsBody(rectangleOf: hero.size)
         self.hero.physicsBody?.categoryBitMask = Hero
         self.hero.physicsBody?.contactTestBitMask = Monster
-        self.hero.physicsBody?.collisionBitMask = Hero
+        self.hero.physicsBody?.collisionBitMask = 0
         self.hero.physicsBody?.affectedByGravity = false
         self.hero.physicsBody?.isDynamic = true
         addChild(self.hero)
