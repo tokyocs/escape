@@ -73,7 +73,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
             self.timer3 = self.timer3 - 1
             //0秒になったらゲームオーバー
             if(self.timer3 <= 0) {
-                self.gameOver()
+                self.gameClear()
             }
         })
         
@@ -159,8 +159,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.monster.position = CGPoint(x: -100, y: 50)
         self.monster.physicsBody = SKPhysicsBody(circleOfRadius: self.monster.frame.width * 0.1)
         self.monster.physicsBody?.categoryBitMask = Monster
-        self.monster.physicsBody?.contactTestBitMask = Hero
-        self.monster.physicsBody?.collisionBitMask = 0
+        self.monster.physicsBody?.contactTestBitMask = Hero|Monster
+        self.monster.physicsBody?.collisionBitMask = Hero
         self.monster.physicsBody?.affectedByGravity = false
         self.monster.physicsBody?.isDynamic = false
         addChild(self.monster)
@@ -168,17 +168,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.shelf = SKSpriteNode(imageNamed: "shelf")
         self.shelf.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
         self.shelf.position = CGPoint(x:0, y:0)
-        addChild(self.shelf)
+        //addChild(self.shelf)
         
         self.shelf2 = SKSpriteNode(imageNamed: "shelf2")
         self.shelf2.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
         self.shelf2.position = CGPoint(x:0, y:0)
-        addChild(self.shelf2)
+        //addChild(self.shelf2)
         
         self.Ladders = SKSpriteNode(imageNamed: "Ladders")
         self.Ladders.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
         self.Ladders.position = CGPoint(x: 0, y: 50)
-        addChild(self.Ladders)
+        //addChild(self.Ladders)
 
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
             let moveToLeft = SKAction.move(to: CGPoint(x: self.hero.position.x, y: self.hero.position.y), duration: 3)
@@ -196,7 +196,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.hero.position = CGPoint(x:0, y:0)
         self.hero.physicsBody = SKPhysicsBody(rectangleOf: hero.size)
         self.hero.physicsBody?.categoryBitMask = Hero
-        self.hero.physicsBody?.contactTestBitMask = Monster
+        self.hero.physicsBody?.contactTestBitMask = Hero|Monster
+        self.hero.physicsBody?.collisionBitMask = Hero
         self.hero.physicsBody?.affectedByGravity = false
         self.hero.physicsBody?.isDynamic = true
         addChild(self.hero)
@@ -262,7 +263,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         
     }
     
-    func gameOver() {
+    func gameClear() {
         //ゲームを中断
         isPaused = true
         //タイマーを止める
@@ -292,12 +293,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
             hero = contact.bodyB
             target = contact.bodyA
         }
-        if target.categoryBitMask == Monster|Hero {
+        if target.categoryBitMask == Monster {
             gameOver()
         }
     }
     func gameOver() {
         isPaused = true
+        timer?.invalidate()
+        timer2?.invalidate()
         // gameover を画像登録して表示する
         self.gameover = SKSpriteNode(imageNamed: "gameover")
         self.gameover.position = CGPoint(x:-300, y:-150)
