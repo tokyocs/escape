@@ -38,7 +38,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
     let Node3: UInt32 = 0b0011
     let Node4: UInt32 = 0b0101
     let Hero: UInt32 = 0b0100
-    let Monster: UInt32 = 0b0101
+    let Monster: UInt32 = 0b0110
+    
     var BGMPlayer: AVAudioPlayer!
     var gameover: SKSpriteNode!
     func playBGM(name: String) {
@@ -73,7 +74,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
             self.timer3 = self.timer3 - 1
             //0秒になったらゲームオーバー
             if(self.timer3 <= 0) {
-                self.gameOver()
+                self.gameClear()
             }
         })
         
@@ -153,14 +154,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.up_button.zPosition = 1
         addChild(self.up_button)
         
-
         self.monster = SKSpriteNode(imageNamed: "monster")
         self.monster.scale(to: CGSize(width: frame.width * 0.2, height: frame.width * 0.2))
         self.monster.position = CGPoint(x: -100, y: 50)
         self.monster.physicsBody = SKPhysicsBody(circleOfRadius: self.monster.frame.width * 0.1)
         self.monster.physicsBody?.categoryBitMask = Monster
-        self.monster.physicsBody?.contactTestBitMask = Hero
-        self.monster.physicsBody?.collisionBitMask = 0
+//        self.monster.physicsBody?.contactTestBitMask = Hero
+        self.monster.physicsBody?.collisionBitMask = Hero
         self.monster.physicsBody?.affectedByGravity = false
         self.monster.physicsBody?.isDynamic = false
         addChild(self.monster)
@@ -180,26 +180,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.Ladders.position = CGPoint(x: 0, y: 50)
         addChild(self.Ladders)
 
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
-            let moveToLeft = SKAction.move(to: CGPoint(x: self.hero.position.x, y: self.hero.position.y), duration: 3)
-            self.monster.run(moveToLeft)
-        })
-        
         self.newmap = SKSpriteNode(imageNamed: "newmap")
         self.newmap.xScale = 1.5
         self.newmap.yScale = 1
         self.newmap.position = CGPoint(x: 0, y: 0)
         self.newmap.zPosition = -1.0
         addChild(self.newmap)
+        
         self.hero = SKSpriteNode(imageNamed: "hero")
         self.hero.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
         self.hero.position = CGPoint(x:0, y:0)
         self.hero.physicsBody = SKPhysicsBody(rectangleOf: hero.size)
         self.hero.physicsBody?.categoryBitMask = Hero
         self.hero.physicsBody?.contactTestBitMask = Monster
+        self.hero.physicsBody?.collisionBitMask = Hero
         self.hero.physicsBody?.affectedByGravity = false
         self.hero.physicsBody?.isDynamic = true
         addChild(self.hero)
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
+            let moveToLeft = SKAction.move(to: CGPoint(x: self.hero.position.x, y: self.hero.position.y), duration: 3)
+            self.monster.run(moveToLeft)
+        })
 
     }
     
@@ -262,7 +264,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         
     }
     
-    func gameOver() {
+    func gameClear() {
         //ゲームを中断
         isPaused = true
         //タイマーを止める
@@ -282,22 +284,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         }
     }
     func didBegin(_ contact: SKPhysicsContact) {
-        print("contact")
-        var hero: SKPhysicsBody
-        var target: SKPhysicsBody
-        if contact.bodyA.categoryBitMask == Monster {
-            hero = contact.bodyA
-            target = contact.bodyB
-        } else {
-            hero = contact.bodyB
-            target = contact.bodyA
-        }
-        if target.categoryBitMask == Monster|Hero {
-            gameOver()
-        }
+        gameOver()
     }
     func gameOver() {
         isPaused = true
+        timer?.invalidate()
+        timer2?.invalidate()
         // gameover を画像登録して表示する
         self.gameover = SKSpriteNode(imageNamed: "gameover")
         self.gameover.position = CGPoint(x:-300, y:-150)
