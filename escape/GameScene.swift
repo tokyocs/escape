@@ -34,14 +34,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
     var timer2: Timer?
     var timer3: Int = 60
 
-    let Node1: UInt32 = 0b0001
-    let Node2: UInt32 = 0b0010
-    let Node3: UInt32 = 0b0011
-    let Node4: UInt32 = 0b0101
-    let Shelf: UInt32 = 0b0111
-    let Shelf2: UInt32 = 0b1000
-    let Hero: UInt32 = 0b0100
-    let Monster: UInt32 = 0b0110
+    let wallCategory: UInt32 = 1 << 1    // wallCategory、壁のカテゴリを0x00000001で設定。
+    let shelfCategory: UInt32 = 1 << 2    // shelfCategory、棚のカテゴリを0x00000010で設定。
+    let heroCategory: UInt32 = 1 << 3    // heroCategory、壁のカテゴリを0x00000100で設定。
+    let monsterCategory: UInt32 = 1 << 4    // wallCategory、壁のカテゴリを0x00001000で設定。
+    
 
     var BGMPlayer: AVAudioPlayer!
     var gameover: SKSpriteNode!
@@ -70,6 +67,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
     
     override func didMove(to view: SKView) {
             playBGM(name: "r4")
+        // override func didMove(to view: SKView) {の関数の中で宣言する。
+        self.physicsWorld.contactDelegate = self
         
         //残りの時間を減らす
         timer2 = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
@@ -87,7 +86,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.node1.physicsBody = SKPhysicsBody(rectangleOf: node1.size)
         self.node1.physicsBody?.affectedByGravity = false
         self.node1.physicsBody?.isDynamic = false
-        self.node1.physicsBody?.categoryBitMask = Shelf
+        self.node1.physicsBody?.categoryBitMask = wallCategory
         self.node1.xScale = 2
         self.node1.yScale = 0.4
         addChild(self.node1)
@@ -98,7 +97,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.node2.physicsBody = SKPhysicsBody(rectangleOf: node2.size)
         self.node2.physicsBody?.affectedByGravity = false
         self.node2.physicsBody?.isDynamic = false
-        self.node2.physicsBody?.categoryBitMask = Shelf
+        self.node2.physicsBody?.categoryBitMask = wallCategory
         self.node2.xScale = 2
         self.node2.yScale = 0.4
         addChild(self.node2)
@@ -109,7 +108,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.node3.physicsBody = SKPhysicsBody(rectangleOf: node3.size)
         self.node3.physicsBody?.affectedByGravity = false
         self.node3.physicsBody?.isDynamic = false
-        self.node3.physicsBody?.categoryBitMask = Shelf
+        self.node3.physicsBody?.categoryBitMask = wallCategory
         self.node3.xScale = 1
         self.node3.yScale = 5
         addChild(self.node3)
@@ -120,7 +119,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.node4.physicsBody = SKPhysicsBody(rectangleOf: node4.size)
         self.node4.physicsBody?.affectedByGravity = false
         self.node4.physicsBody?.isDynamic = false
-        self.node4.physicsBody?.categoryBitMask = Shelf
+        self.node4.physicsBody?.categoryBitMask = wallCategory
         self.node4.xScale = 1
         self.node4.yScale = 5
         addChild(self.node4)
@@ -131,7 +130,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.shelf.physicsBody = SKPhysicsBody(rectangleOf: shelf.size)
         self.shelf.physicsBody?.affectedByGravity = false
         self.shelf.physicsBody?.isDynamic = false
-        self.shelf.physicsBody?.categoryBitMask = Shelf
+        self.shelf.physicsBody?.categoryBitMask = shelfCategory
         self.shelf.xScale = 0.1
         self.shelf.yScale = 0.1
         addChild(self.shelf)
@@ -173,9 +172,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.monster.scale(to: CGSize(width: frame.width * 0.2, height: frame.width * 0.2))
         self.monster.position = CGPoint(x: -100, y: 50)
         self.monster.physicsBody = SKPhysicsBody(circleOfRadius: self.monster.frame.width * 0.1)
-        self.monster.physicsBody?.categoryBitMask = Monster
-        self.monster.physicsBody?.contactTestBitMask = Hero|Monster
-        self.monster.physicsBody?.collisionBitMask = Hero
+        self.monster.physicsBody?.categoryBitMask = monsterCategory
+        self.monster.physicsBody?.contactTestBitMask = heroCategory
+        self.monster.physicsBody?.collisionBitMask = heroCategory|wallCategory|shelfCategory
         self.monster.physicsBody?.affectedByGravity = false
         self.monster.physicsBody?.isDynamic = false
         addChild(self.monster)
@@ -206,15 +205,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.newmap.position = CGPoint(x: 0, y: 0)
         self.newmap.zPosition = -1.0
         addChild(self.newmap)
+        
+        
         self.hero = SKSpriteNode(imageNamed: "hero")
         self.hero.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
         self.hero.position = CGPoint(x:0, y:0)
         self.hero.physicsBody = SKPhysicsBody(rectangleOf: hero.size)
-        self.hero.physicsBody?.categoryBitMask = Hero
-        self.hero.physicsBody?.contactTestBitMask = Hero|Monster
-        self.hero.physicsBody?.collisionBitMask = Hero
+        self.hero.physicsBody?.categoryBitMask = heroCategory
+        self.hero.physicsBody?.contactTestBitMask = monsterCategory
+        self.hero.physicsBody?.collisionBitMask = heroCategory|monsterCategory|wallCategory|shelfCategory
         self.hero.physicsBody?.affectedByGravity = false
         self.hero.physicsBody?.isDynamic = true
+        self.hero.physicsBody?.allowsRotation = false
         addChild(self.hero)
 
     }
@@ -299,18 +301,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
     }
     func didBegin(_ contact: SKPhysicsContact) {
         print("contact")
-        var hero: SKPhysicsBody
-        var target: SKPhysicsBody
-        if contact.bodyA.categoryBitMask == Monster {
-            hero = contact.bodyA
-            target = contact.bodyB
-        } else {
-            hero = contact.bodyB
-            target = contact.bodyA
-        }
-        if target.categoryBitMask == Monster {
+
             gameOver()
-        }
+        
     }
     func gameOver() {
         isPaused = true
