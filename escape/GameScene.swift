@@ -66,7 +66,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
     private var label : SKLabelNode?
     
     override func didMove(to view: SKView) {
-            playBGM(name: "r4")
+        self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
+        playBGM(name: "r4")
         // override func didMove(to view: SKView) {の関数の中で宣言する。
         self.physicsWorld.contactDelegate = self
         
@@ -74,7 +75,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         timer2 = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
         
             self.timer3 = self.timer3 - 1
-            //0秒になったらゲームオーバー
+            //0秒になったらゲームクリア
             if(self.timer3 <= 0) {
                 self.gameClear()
             }
@@ -89,7 +90,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.node1.physicsBody?.categoryBitMask = wallCategory
         self.node1.xScale = 2
         self.node1.yScale = 0.4
-        addChild(self.node1)
+        //addChild(self.node1)
         
         //壁２
         self.node2 = SKSpriteNode(imageNamed:"node2")
@@ -100,7 +101,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.node2.physicsBody?.categoryBitMask = wallCategory
         self.node2.xScale = 2
         self.node2.yScale = 0.4
-        addChild(self.node2)
+        //addChild(self.node2)
         
         //壁３
         self.node3 = SKSpriteNode(imageNamed:"node3")
@@ -111,7 +112,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.node3.physicsBody?.categoryBitMask = wallCategory
         self.node3.xScale = 1
         self.node3.yScale = 5
-        addChild(self.node3)
+        //addChild(self.node3)
         
         //壁４
         self.node4 = SKSpriteNode(imageNamed:"node4")
@@ -122,7 +123,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.node4.physicsBody?.categoryBitMask = wallCategory
         self.node4.xScale = 1
         self.node4.yScale = 5
-        addChild(self.node4)
+        //addChild(self.node4)
         
         //棚１
         self.shelf = SKSpriteNode(imageNamed:"shelf")
@@ -170,8 +171,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
 
         self.monster = SKSpriteNode(imageNamed: "monster")
         self.monster.scale(to: CGSize(width: frame.width * 0.2, height: frame.width * 0.2))
-        self.monster.position = CGPoint(x: -100, y: 50)
-        self.monster.physicsBody = SKPhysicsBody(circleOfRadius: self.monster.frame.width * 0.1)
+        self.monster.position = CGPoint(x: -200, y: 50)
+        self.monster.physicsBody = SKPhysicsBody(circleOfRadius: self.monster.frame.width * 0.2)
         self.monster.physicsBody?.categoryBitMask = monsterCategory
         self.monster.physicsBody?.contactTestBitMask = heroCategory
         self.monster.physicsBody?.collisionBitMask = heroCategory|wallCategory|shelfCategory
@@ -200,8 +201,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         })
         
         self.newmap = SKSpriteNode(imageNamed: "newmap")
-        self.newmap.xScale = 1.5
-        self.newmap.yScale = 1
+        self.newmap.xScale = view.frame.size.width/self.newmap.size.width
+        self.newmap.yScale = view.frame.size.height/self.newmap.size.height
         self.newmap.position = CGPoint(x: 0, y: 0)
         self.newmap.zPosition = -1.0
         addChild(self.newmap)
@@ -301,22 +302,173 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
     }
     func didBegin(_ contact: SKPhysicsContact) {
         print("contact")
-
+        var firstBody: SKPhysicsBody
+        var secondBody: SKPhysicsBody
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        } else {
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
+        if ((firstBody.categoryBitMask == heroCategory)&&(secondBody.categoryBitMask == monsterCategory)){
             gameOver()
-        
+        }
     }
     func gameOver() {
         isPaused = true
         timer?.invalidate()
         timer2?.invalidate()
-        // gameover を画像登録して表示する
-        self.gameover = SKSpriteNode(imageNamed: "gameover")
-        self.gameover.position = CGPoint(x:-300, y:-150)
-        self.gameover.xScale = 0.15
-        self.gameover.yScale = 0.15
-        self.gameover.zPosition = 3
-        addChild(self.gameover)
+        //1秒後に画面を移動する
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
+            // げーム叔一母ーシーに遷移させる。
+            let newScene = GameOverScene(size: (self.scene?.size)!)
+            newScene.scaleMode = SKSceneScaleMode.aspectFill
+            self.view?.presentScene(newScene)
+        }
+ 
        
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//ここから先は誰も見ないでください。お願いします・・・
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//wi-fi盗聴
+//暗号化
+//素数ーーーーーーーーーーーーーー
+//あああああああああああああああああああああああああああああああああああああああああ！
+//やめてください！
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//山ちゃん
+//けんたざる
