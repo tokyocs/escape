@@ -83,36 +83,42 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         
         //壁１
         self.node1 = SKSpriteNode(imageNamed:"node1")
-        self.node1.position = CGPoint(x: 0, y: 270)
+        self.node1.position = CGPoint(x: -140, y: -20)
         self.node1.physicsBody = SKPhysicsBody(rectangleOf: node1.size)
         self.node1.physicsBody?.affectedByGravity = false
         self.node1.physicsBody?.isDynamic = false
         self.node1.physicsBody?.categoryBitMask = wallCategory
-        self.node1.xScale = 2
-        self.node1.yScale = 0.4
-        //addChild(self.node1)
+        self.node1.physicsBody?.collisionBitMask = wallCategory|monsterCategory|heroCategory
+        self.node1.physicsBody?.usesPreciseCollisionDetection = true
+        self.node1.xScale = 0.6
+        self.node1.yScale = 0.7
+        addChild(self.node1)
         
         //壁２
         self.node2 = SKSpriteNode(imageNamed:"node2")
-        self.node2.position = CGPoint(x: 0, y: -270)
+        self.node2.position = CGPoint(x: 0, y: 0)
         self.node2.physicsBody = SKPhysicsBody(rectangleOf: node2.size)
         self.node2.physicsBody?.affectedByGravity = false
         self.node2.physicsBody?.isDynamic = false
         self.node2.physicsBody?.categoryBitMask = wallCategory
-        self.node2.xScale = 2
+        self.node2.physicsBody?.collisionBitMask = wallCategory|monsterCategory|heroCategory
+        self.node2.physicsBody?.usesPreciseCollisionDetection = true
+        self.node2.xScale = 0.5
         self.node2.yScale = 0.4
-        //addChild(self.node2)
+        addChild(self.node2)
         
         //壁３
         self.node3 = SKSpriteNode(imageNamed:"node3")
-        self.node3.position = CGPoint(x:360, y: 0)
+        self.node3.position = CGPoint(x:100, y: 0)
         self.node3.physicsBody = SKPhysicsBody(rectangleOf: node3.size)
         self.node3.physicsBody?.affectedByGravity = false
         self.node3.physicsBody?.isDynamic = false
         self.node3.physicsBody?.categoryBitMask = wallCategory
-        self.node3.xScale = 1
+        self.node3.physicsBody?.collisionBitMask = wallCategory|monsterCategory|heroCategory
+        self.node3.physicsBody?.usesPreciseCollisionDetection = true
+        self.node3.xScale = 0.5
         self.node3.yScale = 5
-        //addChild(self.node3)
+        addChild(self.node3)
         
         //壁４
         self.node4 = SKSpriteNode(imageNamed:"node4")
@@ -121,9 +127,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.node4.physicsBody?.affectedByGravity = false
         self.node4.physicsBody?.isDynamic = false
         self.node4.physicsBody?.categoryBitMask = wallCategory
+        self.node4.physicsBody?.collisionBitMask = wallCategory|monsterCategory|heroCategory
+        self.node4.physicsBody?.usesPreciseCollisionDetection = true
         self.node4.xScale = 1
         self.node4.yScale = 5
-        //addChild(self.node4)
+        addChild(self.node4)
         
         //棚１
         self.shelf = SKSpriteNode(imageNamed:"shelf")
@@ -132,6 +140,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.shelf.physicsBody?.affectedByGravity = false
         self.shelf.physicsBody?.isDynamic = false
         self.shelf.physicsBody?.categoryBitMask = shelfCategory
+        self.shelf.physicsBody?.collisionBitMask = shelfCategory|monsterCategory|heroCategory
+        self.shelf.physicsBody?.usesPreciseCollisionDetection = true
         self.shelf.xScale = 0.1
         self.shelf.yScale = 0.1
         addChild(self.shelf)
@@ -171,13 +181,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
 
         self.monster = SKSpriteNode(imageNamed: "monster")
         self.monster.scale(to: CGSize(width: frame.width * 0.2, height: frame.width * 0.2))
-        self.monster.position = CGPoint(x: -200, y: 50)
+        self.monster.position = CGPoint(x: 500, y: 0)
         self.monster.physicsBody = SKPhysicsBody(circleOfRadius: self.monster.frame.width * 0.2)
         self.monster.physicsBody?.categoryBitMask = monsterCategory
         self.monster.physicsBody?.contactTestBitMask = heroCategory
-        self.monster.physicsBody?.collisionBitMask = heroCategory|wallCategory|shelfCategory
+        self.monster.physicsBody?.collisionBitMask = heroCategory|wallCategory|shelfCategory|monsterCategory
         self.monster.physicsBody?.affectedByGravity = false
         self.monster.physicsBody?.isDynamic = false
+        self.monster.physicsBody?.usesPreciseCollisionDetection = true
         addChild(self.monster)
         
         self.shelf = SKSpriteNode(imageNamed: "shelf")
@@ -218,6 +229,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.hero.physicsBody?.affectedByGravity = false
         self.hero.physicsBody?.isDynamic = true
         self.hero.physicsBody?.allowsRotation = false
+        self.hero.physicsBody?.usesPreciseCollisionDetection = true
         addChild(self.hero)
 
     }
@@ -392,7 +404,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
 
 
 
-//ここから先は誰も見ないでください。お願いします・・・
+//ここから先は誰も見ないでください。お願いします()
 
 
 
@@ -457,7 +469,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
 //
 //
 //
-//
+//♯hashtug:tcsfestival
 //
 //
 //
@@ -472,3 +484,4 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
 //
 //山ちゃん
 //けんたざる
+//フェスタには間に合わないと思う
