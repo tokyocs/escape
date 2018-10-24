@@ -148,33 +148,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
 
         // left_buttonを画像登録して表示する
         self.left_button = SKSpriteNode(imageNamed: "left_button")
-        self.left_button.position = CGPoint(x:-330 , y:-180)
-        self.left_button.xScale = 0.15
-        self.left_button.yScale = 0.15
+        self.left_button.position = CGPoint(x:-360 , y:-180)
+        self.left_button.xScale = 0.30
+        self.left_button.yScale = 0.30
         self.left_button.zPosition = 1
         addChild(self.left_button)
         
         // right_buttonを画像登録して表示する
         self.right_button = SKSpriteNode(imageNamed: "right_button")
-        self.right_button.position = CGPoint(x:-270, y:-180)
-        self.right_button.xScale = 0.15
-        self.right_button.yScale = 0.15
+        self.right_button.position = CGPoint(x:-240, y:-180)
+        self.right_button.xScale = 0.30
+        self.right_button.yScale = 0.30
         self.right_button.zPosition = 1
         addChild(self.right_button)
         
         // under_buttonを画像登録して表示する
         self.under_button = SKSpriteNode(imageNamed: "under_button")
-        self.under_button.position = CGPoint(x:-300, y:-210)
-        self.under_button.xScale = 0.15
-        self.under_button.yScale = 0.15
+        self.under_button.position = CGPoint(x:-300, y:-240)
+        self.under_button.xScale = 0.30
+        self.under_button.yScale = 0.30
         self.under_button.zPosition = 1
         addChild(self.under_button)
         
         // up_button を画像登録して表示する
         self.up_button = SKSpriteNode(imageNamed: "up_button")
-        self.up_button.position = CGPoint(x:-300, y:-150)
-        self.up_button.xScale = 0.15
-        self.up_button.yScale = 0.15
+        self.up_button.position = CGPoint(x:-300, y:-120)
+        self.up_button.xScale = 0.30
+        self.up_button.yScale = 0.30
         self.up_button.zPosition = 1
         addChild(self.up_button)
         
