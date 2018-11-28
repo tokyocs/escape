@@ -20,6 +20,7 @@
 		24BA0E60215B224A005523C3 /* escapeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BA0E5F215B224A005523C3 /* escapeUITests.swift */; };
 		C60C8C1221770F2F00884A71 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60C8C1121770F2F00884A71 /* GameOverScene.swift */; };
 		F60903D7216EEF5700AA38DD /* KekkaScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60903D6216EEF5700AA38DD /* KekkaScene.swift */; };
+		F6EC434A21A52EC700331299 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6EC434921A52EC700331299 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		24BA0E61215B224A005523C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C60C8C1121770F2F00884A71 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		F60903D6216EEF5700AA38DD /* KekkaScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KekkaScene.swift; sourceTree = "<group>"; };
+		F6EC434921A52EC700331299 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				24BA0E46215B2249005523C3 /* Assets.xcassets */,
 				24BA0E48215B2249005523C3 /* LaunchScreen.storyboard */,
 				24BA0E4B215B2249005523C3 /* Info.plist */,
+				F6EC434921A52EC700331299 /* Images.xcassets */,
 			);
 			path = escape;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 			files = (
 				24036834216DCC3800BFA26C /* r4.mp3 in Resources */,
 				24BA0E45215B2249005523C3 /* Main.storyboard in Resources */,
+				F6EC434A21A52EC700331299 /* Images.xcassets in Resources */,
 				24BA0E3C215B2249005523C3 /* GameScene.sks in Resources */,
 				24BA0E47215B2249005523C3 /* Assets.xcassets in Resources */,
 				24BA0E4A215B2249005523C3 /* LaunchScreen.storyboard in Resources */,
@@ -435,6 +439,8 @@
 		24BA0E65215B224A005523C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = escape/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -447,6 +453,8 @@
 		24BA0E66215B224A005523C3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = escape/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
