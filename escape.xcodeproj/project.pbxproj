@@ -19,6 +19,7 @@
 		24BA0E55215B224A005523C3 /* escapeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BA0E54215B224A005523C3 /* escapeTests.swift */; };
 		24BA0E60215B224A005523C3 /* escapeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BA0E5F215B224A005523C3 /* escapeUITests.swift */; };
 		C60C8C1221770F2F00884A71 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60C8C1121770F2F00884A71 /* GameOverScene.swift */; };
+		C60C8C1421A532D500884A71 /* SecondStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60C8C1321A532D500884A71 /* SecondStage.swift */; };
 		F60903D7216EEF5700AA38DD /* KekkaScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60903D6216EEF5700AA38DD /* KekkaScene.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		24BA0E5F215B224A005523C3 /* escapeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = escapeUITests.swift; sourceTree = "<group>"; };
 		24BA0E61215B224A005523C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C60C8C1121770F2F00884A71 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		C60C8C1321A532D500884A71 /* SecondStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondStage.swift; sourceTree = "<group>"; };
 		F60903D6216EEF5700AA38DD /* KekkaScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KekkaScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +116,7 @@
 				24BA0E3D215B2249005523C3 /* Actions.sks */,
 				24036833216DCC3800BFA26C /* r4.mp3 */,
 				24BA0E3F215B2249005523C3 /* GameScene.swift */,
+				C60C8C1321A532D500884A71 /* SecondStage.swift */,
 				C60C8C1121770F2F00884A71 /* GameOverScene.swift */,
 				F60903D6216EEF5700AA38DD /* KekkaScene.swift */,
 				24BA0E41215B2249005523C3 /* GameViewController.swift */,
@@ -280,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C60C8C1421A532D500884A71 /* SecondStage.swift in Sources */,
 				C60C8C1221770F2F00884A71 /* GameOverScene.swift in Sources */,
 				F60903D7216EEF5700AA38DD /* KekkaScene.swift in Sources */,
 				24BA0E40215B2249005523C3 /* GameScene.swift in Sources */,
