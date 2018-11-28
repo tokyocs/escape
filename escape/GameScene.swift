@@ -18,6 +18,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
     var under_button: SKSpriteNode!
     var left_button: SKSpriteNode!
     var newmap: SKSpriteNode!
+    var yuka: SKSpriteNode!
     var hero: SKSpriteNode!
     var monster: SKSpriteNode!
 
@@ -32,7 +33,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
 
     var timer: Timer?
     var timer2: Timer?
-    var timer3: Int = 60
+    
+    let whatstage: Int = 1
+    
+    
+    //制限時間
+    var timer3: Int = 5
 
     let wallCategory: UInt32 = 1 << 1    // wallCategory、壁のカテゴリを0x00000001で設定。
     let shelfCategory: UInt32 = 1 << 2    // shelfCategory、棚のカテゴリを0x00000010で設定。
@@ -307,6 +313,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         //1秒後に画面を移動する
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
             // 結果シーンに遷移させる。
+            let ud = UserDefaults.standard
+            ud.set(self.whatstage, forKey: "whatstage")
+
+            
             let newScene = KekkaScene(size: (self.scene?.size)!)
             newScene.scaleMode = SKSceneScaleMode.aspectFill
             self.view?.presentScene(newScene)
