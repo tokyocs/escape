@@ -36,8 +36,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
 
     let wallCategory: UInt32 = 1 << 1    // wallCategory、壁のカテゴリを0x00000001で設定。
     let shelfCategory: UInt32 = 1 << 2    // shelfCategory、棚のカテゴリを0x00000010で設定。
-    let heroCategory: UInt32 = 1 << 3    // heroCategory、壁のカテゴリを0x00000100で設定。
-    let monsterCategory: UInt32 = 1 << 4    // wallCategory、壁のカテゴリを0x00001000で設定。
+    let heroCategory: UInt32 = 1 << 4    // heroCategory、壁のカテゴリを0x00000100で設定。
+    let monsterCategory: UInt32 = 1 << 8    // wallCategory、壁のカテゴリを0x00001000で設定。
     
 
     var BGMPlayer: AVAudioPlayer!
@@ -187,7 +187,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.monster.physicsBody?.contactTestBitMask = heroCategory
         self.monster.physicsBody?.collisionBitMask = heroCategory|wallCategory|shelfCategory|monsterCategory
         self.monster.physicsBody?.affectedByGravity = false
-        self.monster.physicsBody?.isDynamic = false
+        self.monster.physicsBody?.isDynamic = true
         self.monster.physicsBody?.usesPreciseCollisionDetection = true
         addChild(self.monster)
         
