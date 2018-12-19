@@ -135,7 +135,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="著作権表示"/>
                                 <connections>
-                                    <segue destination="0px-LK-Uc5" kind="show" id="zQc-Ak-p2w"/>
+                                    <segue destination="0px-LK-Uc5" kind="show" id="Z8C-CC-gWL"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -171,7 +171,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="ホーム"/>
                                 <connections>
-                                    <segue destination="U1S-Fb-JfE" kind="push" id="RxB-ie-REO"/>
+                                    <segue destination="U1S-Fb-JfE" kind="show" id="67B-6B-2Zo"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -180,7 +180,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pey-yf-rUK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-500.39062499999994" y="844.53125"/>
+            <point key="canvasLocation" x="-867" y="1157"/>
         </scene>
     </scenes>
 </document>

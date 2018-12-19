@@ -19,6 +19,7 @@ class SecondStage: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
     var under_button: SKSpriteNode!
     var up_button: SKSpriteNode!
     var hero: SKSpriteNode!
+    var monster: SKSpriteNode!
     
     
     let whatstage: Int = 2
@@ -51,7 +52,7 @@ class SecondStage: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         
         // right_buttonを画像登録して表示する
         self.right_button = SKSpriteNode(imageNamed: "right_button")
-        self.right_button.position = CGPoint(x:180, y:100)
+        self.right_button.position = CGPoint(x:200, y:100)
         self.right_button.xScale = 0.30
         self.right_button.yScale = 0.30
         self.right_button.zPosition = 3
@@ -59,7 +60,7 @@ class SecondStage: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         
         // under_buttonを画像登録して表示する
         self.under_button = SKSpriteNode(imageNamed: "under_button")
-        self.under_button.position = CGPoint(x:-300, y:-240)
+        self.under_button.position = CGPoint(x:150, y:50)
         self.under_button.xScale = 0.30
         self.under_button.yScale = 0.30
         self.under_button.zPosition = 3
@@ -67,7 +68,7 @@ class SecondStage: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         
         // up_button を画像登録して表示する
         self.up_button = SKSpriteNode(imageNamed: "up_button")
-        self.up_button.position = CGPoint(x:-300, y:-120)
+        self.up_button.position = CGPoint(x:150, y:150)
         self.up_button.xScale = 0.30
         self.up_button.yScale = 0.30
         self.up_button.zPosition = 3
@@ -86,6 +87,18 @@ class SecondStage: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         self.hero.physicsBody?.allowsRotation = false
         self.hero.physicsBody?.usesPreciseCollisionDetection = true
         addChild(self.hero)
+        
+        self.monster = SKSpriteNode(imageNamed: "monster")
+        self.monster.scale(to: CGSize(width: frame.width * 0.2, height: frame.width * 0.2))
+        self.monster.position = CGPoint(x: 500, y: 0)
+        self.monster.physicsBody = SKPhysicsBody(circleOfRadius: self.monster.frame.width * 0.2)
+        self.monster.physicsBody?.categoryBitMask = monsterCategory
+        self.monster.physicsBody?.contactTestBitMask = heroCategory
+        self.monster.physicsBody?.collisionBitMask = heroCategory|wallCategory|shelfCategory|monsterCategory
+        self.monster.physicsBody?.affectedByGravity = false
+        self.monster.physicsBody?.isDynamic = true
+        self.monster.physicsBody?.usesPreciseCollisionDetection = true
+        addChild(self.monster)
         
     }
     
