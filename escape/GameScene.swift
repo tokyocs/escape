@@ -50,7 +50,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
     var gameover: SKSpriteNode!
     func playBGM(name: String) {
         guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {
-            print("nezumi")
+            print("r4")
             return
         }
         
