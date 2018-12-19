@@ -64,7 +64,6 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
             // 右のボタンが押されたら右に30px動かす。
             if touchNode == nextbutton {
                 // 右に動く動きを指定する。
-                let changeTonext =//1秒後に画面を移動する
                     Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
                         // 結果シーンに遷移させる。
                         let ud = UserDefaults.standard
