@@ -37,7 +37,7 @@ class SecondStage: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
     
     
     //制限時間
-    var timer3: Int = 5
+    var timer3: Int = 60
     
     let wallCategory: UInt32 = 1 << 1    // wallCategory、壁のカテゴリを0x00000001で設定。
     let shelfCategory: UInt32 = 1 << 2    // shelfCategory、棚のカテゴリを0x00000010で設定。
@@ -143,19 +143,21 @@ class SecondStage: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
                 self.node4.xScale = 1
                 self.node4.yScale = 1
                 addChild(self.node4)
+        
+        //棚
+        self.shelf = SKSpriteNode(imageNamed:"shelf")
+        self.shelf.position = CGPoint(x: frame.midX - 100 , y: frame.midY - 100)
+        self.shelf.physicsBody = SKPhysicsBody(rectangleOf: node4.size)
+        self.shelf.physicsBody?.affectedByGravity = false
+        self.shelf.physicsBody?.isDynamic = false
+        self.shelf.physicsBody?.categoryBitMask = wallCategory
+        self.shelf.physicsBody?.collisionBitMask = wallCategory|monsterCategory|heroCategory
+        self.shelf.physicsBody?.usesPreciseCollisionDetection = true
+        self.shelf.xScale = 0.1
+        self.shelf.yScale = 0.1
+        addChild(self.shelf)
                 
-                //棚１
-                self.shelf = SKSpriteNode(imageNamed:"shelf")
-                self.shelf.position = CGPoint(x: frame.midX - 200, y: frame.midY - 150)
-                self.shelf.physicsBody = SKPhysicsBody(rectangleOf: shelf.size)
-                self.shelf.physicsBody?.affectedByGravity = false
-                self.shelf.physicsBody?.isDynamic = false
-                self.shelf.physicsBody?.categoryBitMask = shelfCategory
-                self.shelf.physicsBody?.collisionBitMask = shelfCategory|monsterCategory|heroCategory
-                self.shelf.physicsBody?.usesPreciseCollisionDetection = true
-                self.shelf.xScale = 0.1
-                self.shelf.yScale = 0.1
-                //addChild(self.shelf)
+        
                 
                 // left_buttonを画像登録して表示する
                 self.left_button = SKSpriteNode(imageNamed: "left_button")
