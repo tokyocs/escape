@@ -107,7 +107,7 @@ class SecondStage: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
                 
                 //壁２
                 self.node2 = SKSpriteNode(imageNamed:"node2")
-                self.node2.position = CGPoint(x: frame.midX + 355, y: frame.midY - 100)
+                self.node2.position = CGPoint(x: frame.midX + 300, y: frame.midY - 100)
                 self.node2.physicsBody = SKPhysicsBody(rectangleOf: node2.size)
                 self.node2.physicsBody?.affectedByGravity = false
                 self.node2.physicsBody?.isDynamic = false
@@ -133,7 +133,7 @@ class SecondStage: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
                 
                 //壁４
                 self.node4 = SKSpriteNode(imageNamed:"node4")
-                self.node4.position = CGPoint(x: frame.midX - 360, y: frame.midY)
+                self.node4.position = CGPoint(x: frame.midX - 300, y: frame.midY)
                 self.node4.physicsBody = SKPhysicsBody(rectangleOf: node4.size)
                 self.node4.physicsBody?.affectedByGravity = false
                 self.node4.physicsBody?.isDynamic = false
@@ -146,7 +146,7 @@ class SecondStage: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
         
         //棚
         self.shelf = SKSpriteNode(imageNamed:"shelf")
-        self.shelf.position = CGPoint(x: frame.midX - 100 , y: frame.midY - 100)
+        self.shelf.position = CGPoint(x: frame.midX + 150 , y: frame.midY)
         self.shelf.physicsBody = SKPhysicsBody(rectangleOf: node4.size)
         self.shelf.physicsBody?.affectedByGravity = false
         self.shelf.physicsBody?.isDynamic = false
