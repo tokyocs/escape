@@ -193,7 +193,7 @@ class SecondStage: SKScene, SKPhysicsContactDelegate,AVAudioPlayerDelegate {
                 
                 
                 self.monster2 = SKSpriteNode(imageNamed: "monster2")
-                self.monster2.scale(to: CGSize(width: frame.width * 0.2, height: frame.width * 0.2))
+                self.monster2.scale(to: CGSize(width: frame.width * 0.25, height: frame.width * 0.25))
                 self.monster2.position = CGPoint(x: frame.midX + 500, y: frame.midY)
                 self.monster2.physicsBody = SKPhysicsBody(circleOfRadius: self.monster2.frame.width * 0.2)
                 self.monster2.physicsBody?.categoryBitMask = monsterCategory
